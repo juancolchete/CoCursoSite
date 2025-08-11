@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Mail, Calendar, Award, BookOpen, Gem, Edit, Trophy } from "lucide-react"
+import { Mail, Calendar, Award, BookOpen, Edit, Trophy } from "lucide-react"
 
 const userStats = {
   name: "João Silva",
@@ -13,21 +13,14 @@ const userStats = {
   totalCourses: 3,
   completedCourses: 1,
   activeCourses: 2,
-  totalNFTs: 12,
+  totalModules: 12, // Alterado de totalNFTs para totalModules
   certificates: 1,
   overallProgress: 67,
 }
 
-const recentNFTs = [
-  { id: 1, title: "Bitcoin Semana 3", gradient: "from-purple-500 to-purple-700" },
-  { id: 2, title: "Linux Semana 2", gradient: "from-green-500 to-green-700" },
-  { id: 3, title: "Bitcoin Semana 2", gradient: "from-blue-500 to-blue-700" },
-  { id: 4, title: "Linux Certificado", gradient: "from-yellow-500 to-orange-600" },
-]
-
 const achievements = [
   { title: "Primeiro Curso", description: "Completou seu primeiro curso", icon: Trophy, color: "text-yellow-600" },
-  { title: "Colecionador", description: "Conquistou 10+ NFTs", icon: Gem, color: "text-purple-600" },
+  { title: "Colecionador", description: "Conquistou 10+ módulos", icon: BookOpen, color: "text-purple-600" }, // Alterado de NFTs para módulos e ícone
   { title: "Dedicado", description: "7 dias consecutivos estudando", icon: Award, color: "text-green-600" },
 ]
 
@@ -126,9 +119,9 @@ export default function Perfil() {
 
               <Card>
                 <CardContent className="p-4 text-center">
-                  <Gem className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-gray-900">{userStats.totalNFTs}</p>
-                  <p className="text-sm text-gray-600">NFTs</p>
+                  <BookOpen className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                  <p className="text-2xl font-bold text-gray-900">{userStats.totalModules}</p>
+                  <p className="text-sm text-gray-600">Módulos</p>
                 </CardContent>
               </Card>
 
@@ -140,35 +133,6 @@ export default function Perfil() {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Recent NFTs */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span className="flex items-center">
-                    <Gem className="h-5 w-5 mr-2 text-purple-600" />
-                    NFTs Recentes
-                  </span>
-                  <Button variant="outline" size="sm">
-                    Ver Todos
-                  </Button>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {recentNFTs.map((nft) => (
-                    <div key={nft.id} className="text-center">
-                      <div
-                        className={`h-20 w-20 mx-auto mb-2 bg-gradient-to-br ${nft.gradient} rounded-lg flex items-center justify-center`}
-                      >
-                        <Gem className="h-8 w-8 text-white" />
-                      </div>
-                      <p className="text-xs font-medium text-gray-900">{nft.title}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
 
             {/* Course Progress */}
             <Card>
