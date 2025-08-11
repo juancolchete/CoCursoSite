@@ -20,7 +20,7 @@ const userStats = {
 
 const achievements = [
   { title: "Primeiro Curso", description: "Completou seu primeiro curso", icon: Trophy, color: "text-yellow-600" },
-  { title: "Colecionador", description: "Conquistou 10+ módulos", icon: BookOpen, color: "text-purple-600" }, // Alterado de NFTs para módulos e ícone
+  { title: "Colecionador", description: "Concluiu 10+ módulos", icon: BookOpen, color: "text-purple-600" }, // Alterado de "Conquistou" para "Concluiu"
   { title: "Dedicado", description: "7 dias consecutivos estudando", icon: Award, color: "text-green-600" },
 ]
 
