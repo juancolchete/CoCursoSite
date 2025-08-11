@@ -13,7 +13,7 @@ const userStats = {
   totalCourses: 3,
   completedCourses: 1,
   activeCourses: 2,
-  totalModules: 12, // Alterado de totalNFTs para totalModules
+  totalModules: 12, // Mantendo totalModules (já estava correto)
   certificates: 1,
   overallProgress: 67,
 }

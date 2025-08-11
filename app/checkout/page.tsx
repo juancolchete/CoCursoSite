@@ -51,7 +51,7 @@ const plans = {
     popular: true,
     features: [
       "Acesso a todos os cursos",
-      "NFTs de conclusão semanal",
+      "Certificados de conclusão",
       "Certificados blockchain",
       "Suporte prioritário",
       "Comunidade exclusiva",
@@ -498,29 +498,13 @@ export default function Checkout() {
                 {/* Crypto Payment Info */}
                 {(selectedPayment === "bitcoin" || selectedPayment === "usdt") && (
                   <div className="p-4 bg-gradient-to-r from-orange-50 to-purple-50 rounded-lg border border-orange-200">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        {selectedPayment === "bitcoin" ? (
-                          <Bitcoin className="h-4 w-4 text-orange-600" />
-                        ) : (
-                          <Coins className="h-4 w-4 text-green-600" />
-                        )}
-                      </div>
-                      <div>
-                        <h5 className="font-medium text-sm mb-1">
-                          {selectedPayment === "bitcoin" ? "Pagamento Bitcoin" : "Pagamento USDT"}
-                        </h5>
-                        <p className="text-xs text-gray-600 mb-2">
-                          {selectedPayment === "bitcoin"
-                            ? "Processado via BTCPay Server para máxima segurança e privacidade"
-                            : `Transação na rede ${usdtNetwork.toUpperCase()} com taxas baixas`}
-                        </p>
-                        <div className="flex items-center space-x-2">
-                          <Badge className="bg-green-100 text-green-700 text-xs">Descentralizado</Badge>
-                          <Badge className="bg-blue-100 text-blue-700 text-xs">Sem KYC</Badge>
-                        </div>
-                      </div>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <Shield className="h-4 w-4 text-orange-600" />
+                      <span className="text-sm font-medium text-orange-800">Pagamento Seguro</span>
                     </div>
+                    <p className="text-xs text-orange-700">
+                      Transações processadas via blockchain com confirmação automática
+                    </p>
                   </div>
                 )}
 
@@ -532,23 +516,20 @@ export default function Checkout() {
 
                 {/* Action Buttons */}
                 <div className="space-y-3">
-                  <Button
-                    className={`w-full h-12 text-lg font-semibold ${
-                      selectedPayment === "bitcoin"
-                        ? "bg-orange-500 hover:bg-orange-600"
-                        : selectedPayment === "usdt"
-                          ? "bg-green-500 hover:bg-green-600"
-                          : "bg-purple-600 hover:bg-purple-700"
-                    }`}
-                  >
+                  <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3">
                     {getPaymentButtonText()}
                   </Button>
 
-                  <div className="text-center">
-                    <Link href="/login" className="text-sm text-purple-600 hover:text-purple-700">
-                      Já tenho uma conta? Fazer login
-                    </Link>
-                  </div>
+                  <p className="text-xs text-gray-500 text-center">
+                    Ao finalizar a compra, você concorda com nossos{" "}
+                    <a href="#" className="text-purple-600 hover:underline">
+                      Termos de Uso
+                    </a>{" "}
+                    e{" "}
+                    <a href="#" className="text-purple-600 hover:underline">
+                      Política de Privacidade
+                    </a>
+                  </p>
                 </div>
 
                 {/* Guarantee */}
@@ -565,115 +546,38 @@ export default function Checkout() {
         </div>
 
         {/* Features Section */}
-        <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Por que escolher o CoCurso?</h2>
-
-          <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="h-6 w-6 text-purple-600" />
-              </div>
-              <h3 className="font-semibold mb-2">Conteúdo Prático</h3>
-              <p className="text-sm text-gray-600">Aprenda fazendo, não só teoria</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-6 w-6 text-purple-600" />
-              </div>
-              <h3 className="font-semibold mb-2">NFTs & Certificados</h3>
-              <p className="text-sm text-gray-600">Certificações blockchain verificáveis</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-6 w-6 text-purple-600" />
-              </div>
-              <h3 className="font-semibold mb-2">Comunidade</h3>
-              <p className="text-sm text-gray-600">Networking com profissionais</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Bitcoin className="h-6 w-6 text-orange-500" />
-              </div>
-              <h3 className="font-semibold mb-2">Pagamentos Crypto</h3>
-              <p className="text-sm text-gray-600">Bitcoin e USDT aceitos</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Crypto Benefits Section */}
-        <div className="mt-16 bg-gradient-to-r from-orange-50 to-purple-50 rounded-2xl p-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Pague com Criptomoedas e Economize</h2>
-            <p className="text-gray-600">Aceitamos Bitcoin e USDT com descontos exclusivos</p>
+        <div className="mt-16 max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Por que escolher o CoCurso?</h2>
+            <p className="text-xl text-gray-600">A plataforma mais completa para sua evolução profissional</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="border-orange-200 bg-white/80">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Bitcoin className="h-6 w-6 text-orange-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Bitcoin (BTC)</h3>
-                    <Badge className="bg-orange-100 text-orange-700">50% de desconto</Badge>
-                  </div>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span>Processado via BTCPay Server</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span>Máxima privacidade e segurança</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span>Sem intermediários bancários</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span>Confirmação em até 1 hora</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="h-8 w-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Cursos Práticos</h3>
+              <p className="text-gray-600">Aprenda com projetos reais e aplicáveis no mercado de trabalho atual</p>
+            </div>
 
-            <Card className="border-green-200 bg-white/80">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <Coins className="h-6 w-6 text-green-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">USDT</h3>
-                    <Badge className="bg-green-100 text-green-700">20% de desconto</Badge>
-                  </div>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span>Polygon, Arbitrum e Liquid</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span>Taxas de transação baixas</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span>Confirmação rápida</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span>Stablecoin pareada ao dólar</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="h-8 w-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Certificados</h3>
+              <p className="text-gray-600">
+                Certificados utilizando sistema interplanetário de arquivos IPFS para validação
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Comunidade Ativa</h3>
+              <p className="text-gray-600">Conecte-se com outros estudantes e profissionais da área</p>
+            </div>
           </div>
         </div>
       </div>
