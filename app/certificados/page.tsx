@@ -12,7 +12,7 @@ const certificates = [
     completedDate: "2024-02-28",
     issueDate: "2024-03-01",
     status: "Emitido",
-    nftId: "0x1a2b3c4d5e6f",
+    ipfsCid: "bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m",
     skills: ["Terminal Linux", "Administração de Sistema", "Shell Scripting", "Redes Linux"],
   },
   {
@@ -22,7 +22,7 @@ const certificates = [
     completedDate: "2024-03-15",
     issueDate: "2024-03-16",
     status: "Emitido",
-    nftId: "0x2b3c4d5e6f7a",
+    ipfsCid: "bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
     skills: ["Bitcoin Fundamentals", "Carteiras Hardware", "Autocustódia", "Segurança Cripto"],
   },
   {
@@ -32,7 +32,7 @@ const certificates = [
     completedDate: null,
     issueDate: null,
     status: "Em Progresso",
-    nftId: null,
+    ipfsCid: null,
     skills: ["Smart Contracts", "Solidity", "Web3", "DApps"],
   },
 ]
@@ -43,7 +43,7 @@ export default function Certificados() {
       <div className="p-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Meus Certificados</h1>
-          <p className="text-gray-600">Certificações blockchain verificáveis via NFT</p>
+          <p className="text-gray-600">Certificados utilizando sistema interplanetário de arquivos IPFS</p>
         </div>
 
         <div className="space-y-6">
@@ -95,12 +95,14 @@ export default function Certificados() {
                     </div>
                   </div>
 
-                  {cert.nftId && (
+                  {cert.ipfsCid && (
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-3">NFT Blockchain</h4>
+                      <h4 className="font-semibold text-gray-900 mb-3">IPFS CIDR</h4>
                       <div className="bg-gray-50 p-3 rounded-lg">
-                        <p className="text-xs text-gray-600 mb-1">Token ID:</p>
-                        <p className="font-mono text-sm text-gray-900">{cert.nftId}</p>
+                        <p className="text-xs text-gray-600 mb-1">Content ID:</p>
+                        <p className="font-mono text-sm text-gray-900">
+                          {cert.ipfsCid.substring(0, 12)}...{cert.ipfsCid.substring(cert.ipfsCid.length - 8)}
+                        </p>
                       </div>
                     </div>
                   )}
@@ -116,13 +118,13 @@ export default function Certificados() {
                       <Share className="h-4 w-4 mr-2" />
                       Compartilhar
                     </Button>
-                    <Button variant="outline">Ver NFT</Button>
+                    <Button variant="outline">Ver IPFS</Button>
                   </div>
                 )}
 
                 {cert.status === "Em Progresso" && (
                   <div className="mt-6 pt-4 border-t">
-                    <p className="text-sm text-gray-600 mb-3">Complete o curso para receber seu certificado NFT</p>
+                    <p className="text-sm text-gray-600 mb-3">Complete o curso para receber seu certificado IPFS</p>
                     <Button className="bg-purple-600 hover:bg-purple-700">Continuar Curso</Button>
                   </div>
                 )}

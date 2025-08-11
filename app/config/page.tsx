@@ -8,20 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Separator } from "@/components/ui/separator"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import {
-  User,
-  Bell,
-  Shield,
-  Palette,
-  Wallet,
-  Smartphone,
-  Monitor,
-  Moon,
-  Sun,
-  Trash2,
-  Download,
-  Upload,
-} from "lucide-react"
+import { User, Bell, Shield, Palette, Smartphone, Monitor, Moon, Sun, Trash2, Upload } from "lucide-react"
 
 export default function Config() {
   return (
@@ -65,13 +52,6 @@ export default function Config() {
                   >
                     <Palette className="h-4 w-4 mr-3" />
                     Aparência
-                  </a>
-                  <a
-                    href="#blockchain"
-                    className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg"
-                  >
-                    <Wallet className="h-4 w-4 mr-3" />
-                    Blockchain
                   </a>
                 </nav>
               </CardContent>
@@ -168,7 +148,9 @@ export default function Config() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
                       <p className="font-medium text-gray-900">Notificações por E-mail</p>
-                      <p className="text-sm text-gray-600">Receba atualizações sobre cursos e NFTs por e-mail</p>
+                      <p className="text-sm text-gray-600">
+                        Receba atualizações sobre cursos e certificados IPFS por e-mail
+                      </p>
                     </div>
                     <Switch defaultChecked />
                   </div>
@@ -197,8 +179,8 @@ export default function Config() {
 
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
-                      <p className="font-medium text-gray-900">NFTs Conquistados</p>
-                      <p className="text-sm text-gray-600">Notificações quando conquistar novos NFTs</p>
+                      <p className="font-medium text-gray-900">Certificados Conquistados</p>
+                      <p className="text-sm text-gray-600">Notificações quando conquistar novos certificados IPFS</p>
                     </div>
                     <Switch defaultChecked />
                   </div>
@@ -263,8 +245,8 @@ export default function Config() {
 
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
-                      <p className="font-medium text-gray-900">Mostrar NFTs no Perfil</p>
-                      <p className="text-sm text-gray-600">Exibir seus NFTs conquistados publicamente</p>
+                      <p className="font-medium text-gray-900">Mostrar Certificados no Perfil</p>
+                      <p className="text-sm text-gray-600">Exibir seus certificados IPFS conquistados publicamente</p>
                     </div>
                     <Switch defaultChecked />
                   </div>
@@ -385,85 +367,6 @@ export default function Config() {
                     <p className="text-sm text-gray-600">Habilitar animações e transições</p>
                   </div>
                   <Switch defaultChecked />
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Blockchain Settings */}
-            <Card id="blockchain">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Wallet className="h-5 w-5 mr-2 text-purple-600" />
-                  Configurações Blockchain
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <h4 className="font-medium text-gray-900">Carteira Conectada</h4>
-                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
-                        <Wallet className="h-5 w-5 text-orange-600" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">MetaMask</p>
-                        <p className="text-sm text-gray-600">0x1234...5678</p>
-                      </div>
-                    </div>
-                    <Badge className="bg-green-100 text-green-700">Conectada</Badge>
-                  </div>
-                  <Button variant="outline">Desconectar Carteira</Button>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <h4 className="font-medium text-gray-900">Rede Blockchain</h4>
-                  <Select defaultValue="polygon">
-                    <SelectTrigger className="w-full md:w-64">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="ethereum">Ethereum Mainnet</SelectItem>
-                      <SelectItem value="polygon">Polygon</SelectItem>
-                      <SelectItem value="bsc">Binance Smart Chain</SelectItem>
-                      <SelectItem value="arbitrum">Arbitrum</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <Separator />
-
-                <div className="flex items-center justify-between">
-                  <div className="space-y-1">
-                    <p className="font-medium text-gray-900">Auto-Mint NFTs</p>
-                    <p className="text-sm text-gray-600">Criar NFTs automaticamente ao concluir semanas</p>
-                  </div>
-                  <Switch defaultChecked />
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <h4 className="font-medium text-gray-900">Exportar Dados</h4>
-                  <p className="text-sm text-gray-600">Baixe todos os seus dados da plataforma</p>
-                  <Button variant="outline">
-                    <Download className="h-4 w-4 mr-2" />
-                    Exportar Dados
-                  </Button>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <h4 className="font-medium text-gray-900 text-red-600">Zona de Perigo</h4>
-                  <p className="text-sm text-gray-600">Ações irreversíveis para sua conta</p>
-                  <div className="space-y-3">
-                    <Button variant="outline" className="text-red-600 border-red-600 hover:bg-red-50 bg-transparent">
-                      <Trash2 className="h-4 w-4 mr-2" />
-                      Excluir Conta
-                    </Button>
-                  </div>
                 </div>
               </CardContent>
             </Card>

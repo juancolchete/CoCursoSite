@@ -4,12 +4,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Home, BookOpen, BadgeIcon as Certificate, Settings, Gem } from "lucide-react"
+import { Home, BookOpen, BadgeIcon as Certificate, Settings } from "lucide-react"
 
 const navigation = [
   { name: "Início", href: "/dashboard", icon: Home },
   { name: "Meus Cursos", href: "/cursos", icon: BookOpen },
-  { name: "Meus NFTs", href: "/nfts", icon: Gem },
   { name: "Certificados", href: "/certificados", icon: Certificate },
   { name: "Configurações", href: "/config", icon: Settings },
 ]

@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
-import { BookOpen, Award, TrendingUp, Gem, AlertCircle, Star, Users, Calendar } from "lucide-react"
+import { BookOpen, Award, TrendingUp, AlertCircle, Star, Users, Calendar } from "lucide-react"
 import { fetchCourses, type Course } from "@/lib/courses"
 import Link from "next/link"
 
@@ -40,7 +40,11 @@ export default function Dashboard() {
   const completedCourses = courses.filter((course) => course.status === "Concluído")
   const totalProgress =
     courses.length > 0 ? Math.round(courses.reduce((acc, course) => acc + course.progress, 0) / courses.length) : 0
-  const totalNFTs = courses.reduce((acc, course) => acc + course.completedWeeks, 0)
+  const totalModulesCompleted = courses.reduce((acc, course) => {
+    // Calculate modules based on progress percentage and total weeks
+    const modulesFromProgress = Math.floor((course.progress / 100) * course.totalWeeks)
+    return acc + modulesFromProgress
+  }, 0)
 
   if (loading) {
     return (
@@ -116,10 +120,10 @@ export default function Dashboard() {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center">
-                <TrendingUp className="h-8 w-8 text-green-600" />
+                <BookOpen className="h-8 w-8 text-green-600" />
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Progresso Geral</p>
-                  <p className="text-2xl font-bold text-gray-900">{totalProgress}%</p>
+                  <p className="text-sm font-medium text-gray-600">Módulos Concluídos</p>
+                  <p className="text-2xl font-bold text-gray-900">{totalModulesCompleted}</p>
                 </div>
               </div>
             </CardContent>
@@ -128,10 +132,10 @@ export default function Dashboard() {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center">
-                <Gem className="h-8 w-8 text-purple-600" />
+                <TrendingUp className="h-8 w-8 text-green-600" />
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">NFTs Conquistados</p>
-                  <p className="text-2xl font-bold text-gray-900">{totalNFTs}</p>
+                  <p className="text-sm font-medium text-gray-600">Progresso Geral</p>
+                  <p className="text-2xl font-bold text-gray-900">{totalProgress}%</p>
                 </div>
               </div>
             </CardContent>
